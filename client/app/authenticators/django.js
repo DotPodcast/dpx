@@ -6,7 +6,6 @@ import $ from 'jquery';
 
 export default Base.extend(
   {
-    cookies: inject(),
     authenticate(username, password) {
       return new Promise(
         (resolve, reject) => {
@@ -14,12 +13,6 @@ export default Base.extend(
             {
               url: config.APP.API_HOST + '/api/auth/token/create/',
               type: 'POST',
-              beforeSend: request => {
-                request.setRequestHeader(
-                  'X-CSRFToken',
-                  this.get('cookies').read('csrftoken')
-                )
-              },
               data: JSON.stringify(
                 {
                   username: username,
@@ -45,7 +38,7 @@ export default Base.extend(
         (resolve, reject) => {
           $.ajax(
             {
-              url: '/api/auth/me/',
+              url: config.APP.API_HOST + '/api/auth/me/',
               type: 'GET',
               beforeSend: request => {
                 request.setRequestHeader(

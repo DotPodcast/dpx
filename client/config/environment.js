@@ -26,10 +26,6 @@ module.exports = function(environment) {
 
     'ember-simple-auth': {
       routeAfterAuthentication: 'dashboard'
-    },
-
-    fastboot: {
-      hostWhitelist: ['localhost:4200']
     }
   };
 

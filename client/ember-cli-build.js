@@ -5,11 +5,19 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     'ember-bootstrap': {
-      'bootstrapVersion': 4,
+      'bootstrapVersion': 3,
       'importBootstrapFont': false,
       'importBootstrapCSS': false
     }
   });
+
+  // metisMenu (collapsable sidebar menu)
+  app.import('bower_components/metisMenu/dist/metisMenu.min.css')
+  app.import('bower_components/metisMenu/dist/metisMenu.min.js')
+
+  // Morris.js (line charts)
+  // app.import('bower_components/morris.js/morris.css')
+  // app.import('bower_components/morris.js/morris.min.js')
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

@@ -1,0 +1,23 @@
+<header class="masthead text-center text-white">
+  <div class="masthead-content">
+    <div class="container">
+      <h1 class="masthead-heading mb-0">Sign up</h1>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="p-5">
+      {{# bs-form formLayout="horizontal" model=model onSubmit=(action "submit") as |form| }}
+        {{ form.element controlType="text" label="Username" placeholder="jo" property="username" }}
+        {{ form.element controlType="text" label="First name" placeholder="Jo" property="first_name" }}
+        {{ form.element controlType="text" label="Last name" placeholder="Smith" property="last_name" }}
+        {{ form.element controlType="email" label="Email address" placeholder="jo@smith.com" property="email" }}
+        {{ form.element controlType="password" label="Password" placeholder="something!secure12345" property="password" }}
+        {{ form.element controlType="password" label="Confirm password" placeholder="something!secure12345" property="passwordConfirmation" }}
+        {{ bs-button defaultText="Sign up" type="primary" buttonType="submit" }}
+      {{/ bs-form }}
+    </div>
+  </div>
+</section>

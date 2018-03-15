@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+    server:
+        ports:
+            - 443:80
+        env_file:
+            - server/.dockerenv

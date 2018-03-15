@@ -1,0 +1,23 @@
+<header class="masthead text-center text-white">
+  <div class="masthead-content">
+    <div class="container">
+      <h1 class="masthead-heading mb-0">Login</h1>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="p-5">
+      {{# if error }}
+        {{# bs-alert type="danger" }}{{ error }}{{/ bs-alert }}
+      {{/ if }}
+
+      {{# bs-form formLayout="horizontal" model=this onSubmit=(action "authenticate") as |form| }}
+        {{ form.element controlType="text" label="Username" placeholder="Username" property="username" }}
+        {{ form.element controlType="password" label="Password" placeholder="Password" property="password" }}
+        {{ bs-button defaultText="Login" type="primary" buttonType="submit" }}
+      {{/ bs-form }}
+    </div>
+  </div>
+</section>

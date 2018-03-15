@@ -21,7 +21,8 @@ module.exports = function(environment) {
 
     googleFonts: [
       'Catamaran:100,200,300,400,500,600,700,800,900',
-      'Lato:100,100i,300,300i,400,400i,700,700i,900,900i'
+      'Lato:100,100i,300,300i,400,400i,700,700i,900,900i',
+      'Saira+Extra+Condensed'
     ],
 
     'ember-simple-auth': {

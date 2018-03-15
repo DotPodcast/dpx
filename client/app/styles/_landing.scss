@@ -1,0 +1,38 @@
+.jumbotron {
+  background: #222;
+  color: #bbb;
+  padding-bottom: 200px;
+  font-family: 'Saira Extra Condensed';
+  font-weight: 400;
+
+  h1 {
+    text-transform: uppercase;
+  }
+
+  .btn-default {
+    background: transparent;
+    color: #bbb;
+  }
+}
+
+.marketing-messages {
+  margin-top: -200px;
+}
+
+.box {
+  background: #fff;
+  padding: 30px;
+
+  hr {
+    margin: 40px -30px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-family: 'Saira Extra Condensed';
+  }
+}

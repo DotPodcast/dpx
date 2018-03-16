@@ -23,3 +23,5 @@ services:
             - 80
         ports:
             - 8000:80
+        environment:
+            - REDIS_URL=redis://redis:6379/0

@@ -25,3 +25,13 @@ services:
             - 8000:80
         environment:
             - REDIS_URL=redis://redis:6379/0
+    worker:
+        build: ./worker
+        volumes:
+            - ./worker:/code
+        depends_on:
+            - redis
+        links:
+            - server
+        environment:
+            - REDIS_URL=redis://redis:6379/0

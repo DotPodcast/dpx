@@ -31,15 +31,15 @@ class TaskView(APIView):
         if 'api_access_key' in kw:
             del kw['api_access_key']
 
-        data = {
-            'id': self.job.id,
-            'status': self.job.status,
-            'args': self.job.args,
-            'kwargs': kw,
-            'info': self.job.meta
-        }
-
-        return Response(data)
+        return Response(
+            {
+                'id': self.job.id,
+                'status': self.job.status,
+                'args': self.job.args,
+                'kwargs': kw,
+                'info': self.job.meta
+            }
+        )
 
     def update_meta(self, source, dest):
         for key, value in dest.items():
@@ -118,4 +118,9 @@ class TaskView(APIView):
             except Exception as ex:
                 logger.error(str(ex), exc_info=True)
 
-        return self.get(request, guid=guid, **kwargs)
+        return Response(
+            {
+                'id': self.job.id,
+                'status': self.job.status
+            }
+        )

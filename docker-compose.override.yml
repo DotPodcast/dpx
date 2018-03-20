@@ -13,7 +13,10 @@ services:
             - ./server/volumes/redis:/data
     server:
         build: ./server
-        command: python manage.py runserver 0.0.0.0:80
+        command: >
+            bash -c "python wait_for_postgres.py &&
+                ./manage.py migrate &&
+                ./manage.py runserver 0.0.0.0:80"
         volumes:
             - ./server:/code
         depends_on:

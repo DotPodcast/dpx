@@ -1,0 +1,51 @@
+version: '2'
+
+services:
+    db:
+        image: postgres
+        volumes:
+            - ./server/volumes/postgres:/var/lib/postgresql/data
+    redis:
+        image: redis
+        expose:
+            - 6379
+        volumes:
+            - ./server/volumes/redis:/data
+    server:
+        build: ./server
+        command: >
+            bash -c "python wait_for_postgres.py &&
+                ./manage.py migrate &&
+                ./manage.py runserver 0.0.0.0:8000"
+        volumes:
+            - ./server:/code
+        depends_on:
+            - db
+            - redis
+        expose:
+            - 8000
+        env_file:
+            - server/.dockerenv
+        environment:
+            - REDIS_URL=redis://redis:6379/0
+    worker:
+        build: ./worker
+        volumes:
+            - ./worker:/code
+        depends_on:
+            - redis
+        links:
+            - server
+        environment:
+            - REDIS_URL=redis://redis:6379/0
+    testing:
+        build: ./testing
+        command: >
+            bash -c "python wait_for_server.py && pytest tests.py"
+        volumes:
+            - ./testing:/code
+        depends_on:
+            - server
+            - worker
+        links:
+            - server

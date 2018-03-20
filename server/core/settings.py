@@ -100,3 +100,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CORS_ORIGIN_ALLOW_ALL = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+if os.getenv('DJANGO_ENVIRONMENT') == 'test':
+    TASK_RUNNER = (
+        'tasks.testing.TestRunner',
+        {
+            'RESULT': {
+                'success': True
+            }
+        }
+    )
+
+    SECRET_KEY = 'local'
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'test'
+        }
+    }

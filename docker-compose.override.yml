@@ -28,6 +28,12 @@ services:
             - 8000:80
         environment:
             - REDIS_URL=redis://redis:6379/0
+            - THUNDERPUSH_PUBLIC_KEY=1durjvdyy1FOHrUZcY4KGG2grDy6FE4G
+            - THUNDERPUSH_PRIVATE_KEY=yiXzqv797fIPFvsY2LHkQFBEBkGKqZWHwdLxBzFcRnSu0X40GybvkFWcKiYmnnw5
+    ws:
+        environment:
+            - PUBLIC_KEY=1durjvdyy1FOHrUZcY4KGG2grDy6FE4G
+            - PRIVATE_KEY=yiXzqv797fIPFvsY2LHkQFBEBkGKqZWHwdLxBzFcRnSu0X40GybvkFWcKiYmnnw5
     worker:
         build: ./worker
         volumes:

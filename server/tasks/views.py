@@ -8,6 +8,7 @@ from rq import Queue
 from rq.job import JobStatus
 from redis import Redis
 from .signals import job_finished, job_failed, job_progress
+import realtime
 
 
 class TaskView(APIView):
@@ -92,6 +93,7 @@ class TaskView(APIView):
                 }
             )
 
+        realtime.push(data, 'tasks:%s' % self.job.id)
         self.update_meta(self.job.meta, data)
         self.job.save()
 

@@ -6,3 +6,7 @@ services:
             - 443:80
         env_file:
             - server/.dockerenv
+    ws:
+        image: kjagiello/thunderpush
+        ports:
+            - 8080:8080

@@ -13,10 +13,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django_rq',
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'dpx'
 ]
 
 MIDDLEWARE = [
@@ -100,6 +100,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CORS_ORIGIN_ALLOW_ALL = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+THUNDERPUSH_DOMAIN = os.getenv('THUNDERPUSH_DOMAIN', 'ws')
+THUNDERPUSH_PORT = os.getenv('THUNDERPUSH_PORT', '8080')
+THUNDERPUSH_PUBLIC_KEY = os.getenv('THUNDERPUSH_PUBLIC_KEY')
+THUNDERPUSH_PRIVATE_KEY = os.getenv('THUNDERPUSH_PRIVATE_KEY')
 
 if os.getenv('DJANGO_ENVIRONMENT') == 'test':
     TASK_RUNNER = (

@@ -4,6 +4,7 @@ from rest_framework import routers
 from djoser import urls as djoser_urls
 from djoser.urls import authtoken as djoser_authtoken
 from tasks import views as tasks
+from dpx import views as dpx
 from . import views
 
 router = routers.DefaultRouter()
@@ -13,5 +14,6 @@ urlpatterns = [
     url(r'^api/auth/', include(djoser_authtoken)),
     url(r'^api/', include(router.urls)),
     url(r'^api/v1/tasks/(?P<guid>[^/]+)/$', tasks.TaskView.as_view()),
+    url(r'^api/v1/podcasts/import/$', dpx.ImportView.as_view()),
     url(r'^admin/', admin.site.urls),
 ]

@@ -1,6 +1,6 @@
-import DjangoAdapter from 'ember-django-adapter/adapters/drf';
+import ApplicationAdapter from './application';
 
-export default DjangoAdapter.extend(
+export default ApplicationAdapter.extend(
   {
     namespace: 'api/auth',
     buildURL(modelName, id, snapshot, requestType, query) {

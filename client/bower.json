@@ -1,0 +1,6 @@
+{
+  "name": "client",
+  "dependencies": {
+    "ember-cli-sockjs-shim": "^0.0.1"
+  }
+}

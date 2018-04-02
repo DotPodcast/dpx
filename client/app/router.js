@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('signup');
   this.route('profile');
   this.route('dashboard');
+  this.route('import-progress', {path: '/import/:jobid'});
 });
 
 export default Router;

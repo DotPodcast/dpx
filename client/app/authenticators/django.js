@@ -43,7 +43,7 @@ export default Base.extend(
               beforeSend: request => {
                 request.setRequestHeader(
                   'Authorization',
-                  `Token ${data.auth_token}`
+                  `Bearer ${data.auth_token}`
                 )
               },
               ontentType: 'application/json;charset=utf-8',

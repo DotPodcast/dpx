@@ -13,10 +13,7 @@ const Validations = buildValidations(
         }
       )
     ],
-    first_name: validator('presence', true),
-    last_name: validator('presence', true),
     email: [
-      validator('presence', true),
       validator(
         'format',
         {
@@ -25,7 +22,6 @@ const Validations = buildValidations(
       )
     ],
     password: [
-      validator('presence', true),
       validator(
         'length',
         {
@@ -34,7 +30,6 @@ const Validations = buildValidations(
       )
     ],
     passwordConfirmation: [
-      validator('presence', true),
       validator(
         'confirmation',
         {

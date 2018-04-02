@@ -17,7 +17,10 @@ module.exports = function(environment) {
       }
     },
 
-    APP: {},
+    APP: {
+        API_HOST: 'http://localhost:8000',
+        API_NAMESPACE: 'api/v1'
+    },
 
     googleFonts: [
       'Catamaran:100,200,300,400,500,600,700,800,900',
@@ -36,7 +39,6 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.APP.API_HOST = '//localhost:8000';
   }
 
   if (environment === 'test') {

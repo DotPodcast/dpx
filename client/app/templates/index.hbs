@@ -1,9 +1,46 @@
 <header class="jumbotron text-center">
   <div class="container">
-    <h1>Join DotPodcast</h1>
-    <p class="lead">Keep your current hosting provider<br>Take advantage of the new JSON spec</p>
-    {{# link-to 'signup' class='btn btn-primary btn-lg rounded-pill mt-5' }}Sign up{{/ link-to }}
-    {{# link-to 'dashboard' class='btn btn-default btn-lg rounded-pill mt-5' }}Login{{/ link-to }}
+    <h1>Cloud DPX</h1>
+    <p class="lead">
+      Keep your current hosting provider<br>
+      Take advantage of the new JSON spec
+    </p>
+
+    {{# unless authRequired }}
+      {{# bs-form model=this onSubmit=(action "beginImportOrSignup") as |form| }}
+        {{ form.element controlType="url" size="lg" placeholder="Enter your RSS feed URL to get started" property="url" autofocus=true disabled=submitting }}
+      {{/ bs-form }}
+    {{ else }}
+      {{# bs-form model=userModel formLayout="vertical" onSubmit=(action "signupAndBeginImport") as |form| }}
+        <div class="row">
+          <div class="col-sm-6">
+            {{ form.element controlType="text" size="lg" placeholder="Choose a username" property="username" autofocus=true disabled=submitting }}
+          </div>
+
+          <div class="col-sm-6">
+            {{ form.element controlType="email" size="lg" placeholder="Enter your email address" property="email" disabled=submitting }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          {{ form.element controlType="password" size="lg" placeholder="Choose a password" property="password" disabled=submitting }}
+        </div>
+
+        <div class="form-group">
+          {{ form.element controlType="password" size="lg" placeholder="Confirm password" property="passwordConfirmation" disabled=submitting }}
+        </div>
+
+        <div class="form-group">
+          {{# unless submitting }}
+            {{ bs-button defaultText="Sign up" type="primary" buttonType="submit" size="lg" disabled=userModel.isSaving }}
+          {{ else }}
+            <div class="text-center">
+              <i class="fa fa-spin fa-spinner"></i>
+            </div>
+          {{/ unless }}
+        </div>
+      {{/ bs-form }}
+    {{/ unless }}
   </div>
 </header>
 
